@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -g
 CFLAGS  = -Iincludes
 LDFLAGS = -L/home/hawild/.local/lib -lmlx_Linux -lXext -lX11
 
@@ -12,6 +12,9 @@ SRC = ./src/input_check.c\
 ./src/map_check.c\
 ./src/path_check.c\
 ./src/flood_fill.c\
+./src/event_handling.c\
+./src/make_move.c\
+./src/print_moves.c\
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))

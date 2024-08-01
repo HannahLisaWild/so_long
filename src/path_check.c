@@ -6,13 +6,13 @@
 /*   By: hawild <hawild@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 16:33:03 by hawild            #+#    #+#             */
-/*   Updated: 2024/07/23 20:35:01 by hawild           ###   ########.fr       */
+/*   Updated: 2024/08/01 13:30:52 by hawild           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_free(char **array)
+int	ft_free(char **array)
 {
 	int	i;
 
@@ -23,6 +23,7 @@ void	ft_free(char **array)
 		i++;
 	}
 	free(array);
+	return (0);
 }
 
 t_point	get_players_position(char **map, t_point size)
@@ -58,7 +59,7 @@ char	**copy_map(char **map, t_point size)
 	int		i;
 	int		j;
 
-	copy = malloc(sizeof(char *) * size.y);
+	copy = malloc(sizeof(char *) * (size.y + 1));
 	if (!copy)
 		return (NULL);
 	i = -1;
@@ -108,10 +109,10 @@ int	is_path_valid(char **map, char **map_copy, t_point size,
 
 int	path_check(t_data *data)
 {
-	t_point size;
-	t_point player_position;
-	char **map;
-	char **map_copy;
+	t_point	size;
+	t_point	player_position;
+	char	**map;
+	char	**map_copy;
 
 	size.x = data->map_columns;
 	size.y = data->map_rows;

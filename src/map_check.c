@@ -6,7 +6,7 @@
 /*   By: hawild <hawild@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 13:14:42 by hawild            #+#    #+#             */
-/*   Updated: 2024/07/23 16:30:40 by hawild           ###   ########.fr       */
+/*   Updated: 2024/08/01 13:19:31 by hawild           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	is_enclosed(t_data *data)
 
 int	is_valid(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (data->array[++i])

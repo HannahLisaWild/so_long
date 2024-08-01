@@ -6,7 +6,7 @@
 /*   By: hawild <hawild@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:43:52 by hawild            #+#    #+#             */
-/*   Updated: 2024/07/23 16:36:11 by hawild           ###   ########.fr       */
+/*   Updated: 2024/08/01 13:49:16 by hawild           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	error(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -25,7 +25,7 @@ int	error(char *str)
 	return (-1);
 }
 
-int 	check_map(t_data *data)
+int	check_map(t_data *data)
 {
 	if (is_rectangular(data) == -1)
 		return (error("Map is not rectangular (Error)\n"));
@@ -70,20 +70,21 @@ static int	read_and_store_map(char *file_data, t_data *data, int fd)
 
 int	check_input(char *input_file, t_data *data)
 {
-	int fd;
-	char *file_data;
+	int		fd;
+	char	*file_data;
 
 	if (access(input_file, F_OK | R_OK) != 0)
-		return (error("Error accessing the file\n"));
+		return (error("Error accessing the file\n") + 3);
 	fd = open(input_file, O_RDONLY);
 	if (fd == -1)
-		return (error("Error opening the file\n"));
+		return (error("Error opening the file\n") + 3);
 	file_data = get_next_line(fd);
 	if (file_data == NULL)
-		return (error("Empty file\n"));
+		return (error("Empty file\n") + 3);
 	read_and_store_map(file_data, data, fd);
 	if (close(fd) != 0)
 		return (error("Error closing the file\n"));
-	check_map(data);
+	if (check_map(data) == -1)
+		return (-1);
 	return (0);
 }

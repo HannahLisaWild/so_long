@@ -6,7 +6,7 @@
 /*   By: hawild <hawild@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:27:53 by hawild            #+#    #+#             */
-/*   Updated: 2024/07/22 19:11:38 by hawild           ###   ########.fr       */
+/*   Updated: 2024/08/01 13:54:46 by hawild           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	*read_to_buffer(int fd, char *remains, char *buffer)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == 0)
 			break ;
-		if (bytes_read < 0)
+		if (bytes_read < 0 || buffer[0] == '\0')
 		{
 			free(remains);
 			return (NULL);
@@ -107,39 +107,3 @@ char	*get_next_line(int fd)
 	remains[fd] = fill_line(line, remains[fd]);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
-
-// 	fd = open("example.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		perror("Error opening the file");
-// 		return (1);
-// 	}
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("Line read: %s", line);
-// 		free(line);
-// 	}
-// 	if (close(fd) == -1)
-// 	{
-// 		perror("Error closing the file");
-// 		return (1);
-// 	}
-// 	return (0);
-// }
-
-// int main()
-// {
-//     char *line;
-
-//     while ((line = get_next_line(0)) != NULL)
-//     {
-//         printf("Line read: %s\n", line);
-//         free(line);
-//     }
-//     return (0);
-// }

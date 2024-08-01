@@ -6,12 +6,11 @@
 /*   By: hawild <hawild@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:37:52 by hawild            #+#    #+#             */
-/*   Updated: 2024/07/22 20:37:41 by hawild           ###   ########.fr       */
+/*   Updated: 2024/07/29 15:57:30 by hawild           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
 
 static char	**ft_error(char **tab)
 {
